@@ -1,8 +1,10 @@
 #pragma once
 
 #include <string>
-#include <ostream>
 using std::string;
+
+#include <ostream>
+using std::ostream;
 
 #include <list>
 #include <map>
@@ -76,7 +78,7 @@ public:
     Json & operator [] (const char * key);
     Json & operator [] (const string & key);
 
-    friend std::ostream & operator << (std::ostream & os, const Json & json)
+    friend ostream & operator << (ostream & os, const Json & json)
     {
         os << json.str();
         return os;
