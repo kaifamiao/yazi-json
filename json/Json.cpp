@@ -343,32 +343,23 @@ Json & Json::operator [] (int index)
 {
     if (index < 0)
     {
-        throw std::logic_error("function Json::operator [int] index less than 0");
+        throw std::logic_error("function [] index less than 0");
     }
     if (m_type != json_array)
     {
-        clear();
-        m_type = json_array;
-        m_value.m_array = new std::list<Json>();
+        throw std::logic_error("function [] not an array");
     }
     int size = (m_value.m_array)->size();
-    if (index >= 0 && index < size)
-    {
-        auto it = (m_value.m_array)->begin();
-        for (int i = 0; i < index; i++)
-        {
-            it++;
-        }
-        return *it;
-    }
     if (index >= size)
     {
-        for (int i = size; i <= index; i++)
-        {
-            (m_value.m_array)->push_back(Json());
-        }
+        throw std::logic_error("function [] out of range");
     }
-    return (m_value.m_array)->back();
+    auto it = (m_value.m_array)->begin();
+    for (int i = 0; i < index; i++)
+    {
+        it++;
+    }
+    return *it;
 }
 
 Json & Json::operator [] (const char * key)

@@ -8,21 +8,28 @@ using namespace yazi::json;
 
 #include <sys/time.h>
 
+#include <iostream>
+#include "Json.h"
+using namespace yazi::json;
+
+
 int main()
 {
-    // ifstream fin("./t.json");
-    // stringstream ss;
-    // ss << fin.rdbuf();
-    // const string & data = ss.str();
-    // Json v;
-    // v.parse(data);
-    // std::cout << v.str() << std::endl;
-    // return 0;
+    ifstream fin("./main.json");
+    stringstream ss;
+    ss << fin.rdbuf();
+    const string & data = ss.str();
+    Json v;
+    v.parse(data);
+    std::cout << v.str() << std::endl;
+    return 0;
 
     // Json v1 = true;
     // Json v2 = 123;
     // Json v3 = 1.23;
     // Json v4 = "hello world";
+    // const string & s = v4;
+    // std::cout << s << std::endl;
     // std::cout << v1.str() << std::endl;
     // std::cout << v2.str() << std::endl;
     // std::cout << v3.str() << std::endl;
@@ -42,16 +49,8 @@ int main()
     // arr.append(1.23);
     // arr.append("hello world");
     // std::cout << arr.str() << std::endl;
-
-    // arr.remove(1);
-    // std::cout << arr.str() << std::endl;
-
-    // Json arr;
-    // arr[0] = 123;
-    // arr[1] = 1.23;
-    // arr[2] = "hello world";
-    // arr[5] = true;
-    // std::cout << arr.str() << std::endl;
+    // std::cout << arr[0] << "," << arr[1] << "," << arr[2] << std::endl;
+    // return 0;
 
     // // object value
     // Json obj;
@@ -62,6 +61,7 @@ int main()
     // obj.clear();
     // return 0;
 
+/*
     try
     {
         ifstream fin("./test.json");
@@ -73,12 +73,12 @@ int main()
         gettimeofday(&tv, NULL);
         int start_sec = tv.tv_sec;
         int start_usec = tv.tv_usec;
-        const int max = 1;
+        const int max = 10000;
         for (int i = 0; i < max; i++)
         {
             Json json;
             json.parse(data);
-            std::cout << json.str() << std::endl;
+            // std::cout << json.str() << std::endl;
             json.clear();
         }
         gettimeofday(&tv, NULL);
@@ -92,4 +92,5 @@ int main()
         std::cout << "catch exception: " << e.what() << std::endl;
     }
     return 0;
+    */
 }

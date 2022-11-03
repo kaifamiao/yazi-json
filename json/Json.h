@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <ostream>
 using std::string;
 
 #include <list>
@@ -74,6 +75,12 @@ public:
     Json & operator [] (int index);
     Json & operator [] (const char * key);
     Json & operator [] (const string & key);
+
+    friend std::ostream & operator << (std::ostream & os, const Json & json)
+    {
+        os << json.str();
+        return os;
+    }
 
     operator bool();
     operator int();
