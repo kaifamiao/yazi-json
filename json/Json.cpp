@@ -223,7 +223,7 @@ void Json::clear()
     m_type = json_null;
 }
 
-bool Json::has(int index)
+bool Json::has(int index) const
 {
     if (m_type != json_array)
     {
@@ -233,19 +233,51 @@ bool Json::has(int index)
     return (index >= 0) && (index < size);
 }
 
-bool Json::has(const char * key)
+bool Json::has(const char * key) const
 {
     string name(key);
     return has(name);
 }
 
-bool Json::has(const string & key)
+bool Json::has(const string & key) const
 {
     if (m_type != json_object)
     {
         return false;
     }
     return (m_value.m_object)->find(key) != (m_value.m_object)->end();
+}
+
+Json Json::get(int index) const
+{
+    if (!has(index))
+    {
+        return Json();
+    }
+    auto it = (m_value.m_array)->begin();
+    for (int i = 0; i < index; i++)
+    {
+        it++;
+    }
+    return *it;
+}
+
+Json Json::get(const char * key) const
+{
+    if (!has(key))
+    {
+        return Json();
+    }
+    return (*(m_value.m_object))[key];
+}
+
+Json Json::get(const string & key) const
+{
+    if (!has(key))
+    {
+        return Json();
+    }
+    return (*(m_value.m_object))[key];
 }
 
 void Json::remove(int index)

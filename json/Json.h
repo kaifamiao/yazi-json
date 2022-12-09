@@ -59,9 +59,13 @@ public:
 
     void clear();
 
-    bool has(int index);
-    bool has(const char * key);
-    bool has(const string & key);
+    bool has(int index) const;
+    bool has(const char * key) const;
+    bool has(const string & key) const;
+
+    Json get(int index) const;
+    Json get(const char * key) const;
+    Json get(const string & key) const;
 
     void remove(int index);
     void remove(const char * key);
