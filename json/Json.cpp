@@ -3,8 +3,8 @@ using std::stringstream;
 
 #include <stdexcept>
 
-#include "Json.h"
-#include "Parser.h"
+#include <json/Json.h>
+#include <json/Parser.h>
 using namespace yazi::json;
 
 Json::Json() : m_type(json_null)

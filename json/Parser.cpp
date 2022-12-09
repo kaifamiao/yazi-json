@@ -3,7 +3,7 @@
 #include <cstdlib>
 using namespace std;
 
-#include "Parser.h"
+#include <json/Parser.h>
 using namespace yazi::json;
 
 Parser::Parser() : m_idx(0)
