@@ -20,7 +20,7 @@ main.cpp
 #include <sstream>
 using namespace std;
 
-#include "Json.h"
+#include <json/Json.h>
 using namespace yazi::json;
 
 int main()
